@@ -7,7 +7,7 @@ você encontrar novos amiginhos!
 ```
 git clone git@github.com:twdnl14/Busque-o-seu-amiguinho.git
 cd Busque-o-seu-amiguinho/
-cp .env-sample .env
+env\Scripts\activate
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
