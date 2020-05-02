@@ -10,7 +10,7 @@ class Profile(models.Model):
     bio = models.TextField(
         "Sua Bio",
         default="",
-        help_text="Descreva um pouco sobre você para as empresas poderem te conhecer melhor!",
+        help_text="Descreva um pouco sobre você para as empresas poderem te conhecer melhor!", # Empresas? wtf
     )
 
     def __str__(self):
