@@ -9,4 +9,4 @@ class Profile(models.Model):
 
 
 class StudyRoom(models.Model):
-    users = models.ManyToManyField()
+    pass
