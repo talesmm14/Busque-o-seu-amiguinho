@@ -6,21 +6,22 @@ O Busque seu amiginho coisas para fazer
 
  - [x] Criar projeto
  - [x] Criar app core
- - [x] configuar virtual env e requirements
- - [x] iniciar os models
+ - [x] Configuar virtual env e requirements
+ - [x] Iniciar os models
  - [X] Cadastro
- - [X] login
- - [ ] visualizar amiginhos
- - [ ] sair
- - [ ] editar perfil
- - [x] mudar senha
- - [ ] criar sala de estudo
- - [ ] ediar sala de estudo
- - [ ] excluir sala de estudo
+ - [X] Login
+ - [X] Visualizar amiguinhos
+ - [ ] Sair
+ - [ ] Editar perfil
+ - [X] Mudar senha
+ - [ ] Criar sala de estudo
+ - [ ] Editar sala de estudo
+ - [ ] Visualizar sala de estudo
+ - [ ] Excluir sala de estudo
  - [ ] Buscar amiginhos
  - [ ] Bot discord
  - [ ] Bot telegram
- - [ ] contato
+ - [ ] Contato
  - [ ] Banco de dados Postgressql
  - [ ] Frond End React
  - [ ] Deploy in Heroku 
