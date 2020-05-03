@@ -8,9 +8,9 @@ class Profile(models.Model):
     github = models.URLField(verbose_name="GitHub", blank=True, default="")
 
     bio = models.TextField(
-        "Sua Bio",
+        "Sobre você",
         default="",
-        help_text="Descreva um pouco sobre você para as empresas poderem te conhecer melhor!", # Empresas? wtf
+        help_text="Descreva sobre você para os amiginhos poderem te conhecer melhor!!",
     )
 
     def __str__(self):
@@ -21,4 +21,18 @@ class Profile(models.Model):
 
 
 class StudyRoom(models.Model):
-    pass
+    group_name = models.CharField("Nome do grupo", max_length=500, blank=False)
+    telegram = models.URLField(verbose_name="Telegram", blank=True, default="")
+    discord = models.URLField(verbose_name="Discord", blank=True, default="")
+    users = models.ManyToManyField(Profile, blank=True)
+    tags = models.ManyToManyField("Tag")
+
+
+class Tag(models.Model):
+    name = models.CharField("Tag", max_length=100, default="", blank=False)
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return self.name
