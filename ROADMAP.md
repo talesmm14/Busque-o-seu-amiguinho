@@ -4,6 +4,10 @@ O Busque seu amiginho coisas para fazer
 
 ## Previsão de coisas a serem feitas
 
+ - [x] Criar projeto
+ - [x] Criar app core
+ - [x] configuar virtual env e requirements
+ - [x] iniciar os models
  - [X] Cadastro
  - [X] login
  - [ ] visualizar amiginhos
@@ -17,6 +21,7 @@ O Busque seu amiginho coisas para fazer
  - [ ] Bot discord
  - [ ] Bot telegram
  - [ ] contato
+ - [ ] Banco de dados Postgressql
  - [ ] Frond End React
  - [ ] Deploy in Heroku 
  
