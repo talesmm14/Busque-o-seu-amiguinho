@@ -1,6 +1,6 @@
 # Busque seu amiginho
 
-Projeto Open source feito por amiginhos para 
+Projeto Open source feito por amiginhos para
 você encontrar novos amiginhos!
 
 ### Tutorial
@@ -17,4 +17,13 @@ python manage.py runserver
 ## Caso você crie um nova classe
 ```
 python manage.py makemigrations
+```
+
+### Tutorial Front-end
+
+```
+$ cd frontend/
+$ yarn
+$ yarn start
+
 ```
