@@ -37,7 +37,6 @@ class RegisterForm(UserCreationForm):
             profile = Profile(
                 user=instance,
                 github=self.cleaned_data["github"],
-                on_mailing_list=self.cleaned_data["on_mailing_list"],
             )
             authenticate(
                 username=instance.username, password=self.cleaned_data.get("password1")
