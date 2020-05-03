@@ -39,3 +39,5 @@ tzlocal==2.0.0
 urllib3==1.25.7
 wcwidth==0.1.7
 wrapt==1.11.2
+django-widget-tweaks
+django-select2
