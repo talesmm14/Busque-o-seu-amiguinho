@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles</title>
+    <style>
+        div {
+            padding:10px}
+        ul {
+            list-style-type:none}
+    </style>
+</head>
+<body>
+<h1>Profiles</h1>
+<ul>
+    {% for profile in profiles %}
+    <div>
+        <li>Nome: {{ profile.user }}</li>
+        <li>GitHub: {{ profile.github }}</li>
+        <li>Bio: {{ profile.bio }}</li>
+    </div>
+    {% endfor %}
+</ul>
+</body>
+</html>
