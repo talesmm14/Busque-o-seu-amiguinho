@@ -1,9 +1,9 @@
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django import forms
 
 from core.models import Profile, Tag
-from django_select2.forms import Select2MultipleWidget, Select2Widget
+from django_select2.forms import Select2MultipleWidget
 from django.contrib.auth.models import User
 
 
@@ -45,3 +45,40 @@ class RegisterForm(UserCreationForm):
             profile.tags.set(self.cleaned_data["tags_"])
             profile.save()
         return instance
+
+
+class PasswordChangeForm(SetPasswordForm):
+    """
+    A form that lets a user change their password by entering their old
+    password.
+    """
+    error_messages = {
+        **SetPasswordForm.error_messages,
+        'password_incorrect': "Your old password was entered incorrectly. Please enter it again.",
+    }
+    old_password = forms.CharField(
+        label="Old password",
+        strip=False,
+        widget=forms.PasswordInput(attrs={'autofocus': True}),
+    )
+
+    field_order = ['old_password', 'new_password1', 'new_password2']
+
+    def clean_old_password(self):
+        """
+        Validate that the old_password field is correct.
+        """
+        old_password = self.cleaned_data["old_password"]
+        if not self.user.check_password(old_password):
+            raise forms.ValidationError(
+                self.error_messages['password_incorrect'],
+                code='password_incorrect',
+            )
+        return old_password
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("github", "tags")
+        widgets = {"tags": Select2MultipleWidget}
