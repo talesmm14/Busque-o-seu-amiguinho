@@ -13,3 +13,8 @@ python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
+
+## Caso você crie um nova classe
+```
+python manage.py makemigrations
+```
