@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import Profile
+from .models import Profile, Tag, StudyRoom
 
 # Create your views here.
 from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm
@@ -66,9 +66,8 @@ def page_home_view(request):
 
 # create view_profiles
 def profiles_view(request):
-    user = Profile.user
-    github = Profile.github
-    bio = Profile.github
-    return render(request, "pages/profiles.html", {"user": user, "github": github, "bio": bio})
+    profiles = Profile.objects.all()
+    tags = Tag.objects.all()
+    return render(request, "profiles.html", {'profiles': profiles, 'tags': tags})
 
 # create view_rooms
