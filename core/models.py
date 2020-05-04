@@ -19,6 +19,10 @@ class Profile(models.Model):
     def __repr__(self):
         return "{} {}".format(self.user.first_name, self.user.last_name)
 
+    class Meta:
+        verbose_name = "Perfil"
+        verbose_name_plural = "Perfis"
+
 
 class StudyRoom(models.Model):
     group_name = models.CharField("Nome do grupo", max_length=500, blank=False)

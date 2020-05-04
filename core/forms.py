@@ -18,6 +18,13 @@ class RegisterForm(UserCreationForm):
         label="Tags", queryset=Tag.objects.all(), widget=Select2MultipleWidget
     )
 
+    bio = forms.CharField(
+        label="Sobre você",
+        widget=forms.Textarea(attrs={"bio": "Diga algo sobre você."}),
+        help_text="Descreva sobre você para os amiginhos poderem te conhecer melhor!!",
+        required=False,
+    )
+
     class Meta:
         model = User
         fields = ("first_name", "last_name", "email", "username")
@@ -37,6 +44,7 @@ class RegisterForm(UserCreationForm):
             profile = Profile(
                 user=instance,
                 github=self.cleaned_data["github"],
+                bio=self.cleaned_data["bio"],
             )
             authenticate(
                 username=instance.username, password=self.cleaned_data.get("password1")

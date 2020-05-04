@@ -21,6 +21,7 @@ def page_signup(request):
         return redirect("/")
     return render(request, "signup.html", context)
 
+
 @login_required
 def profile_change_password(request):
     template_name = "pythonistas-area-password-change.html"
@@ -67,7 +68,6 @@ def page_home_view(request):
 # create view_profiles
 def profiles_view(request):
     profiles = Profile.objects.all()
-    tags = Tag.objects.all()
-    return render(request, "profiles.html", {'profiles': profiles, 'tags': tags})
+    return render(request, "profiles.html", {'profiles': profiles})
 
 # create view_rooms
