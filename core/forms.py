@@ -90,3 +90,55 @@ class EditProfileForm(forms.ModelForm):
         model = Profile
         fields = ("github", "tags")
         widgets = {"tags": Select2MultipleWidget}
+
+
+class RegisterRoom(forms.ModelForm):
+    group_name = forms.CharField(
+        label="Nome do Grupo de estudo ou do Projeto",
+        max_length=100,
+        required=True,
+        widget=forms.TextInput(attrs={'required': "required"})
+    )
+
+    telegram_link = forms.URLField(
+        label="Telegram Invite (opcional)",
+        widget=forms.TextInput(attrs={"placeholder": "Se houver um grupo no telegram para este grupo, link aqui."}),
+        required=False
+    )
+
+    discord_link = forms.URLField(
+        label="Discord link (opcional)",
+        widget=forms.TextInput(attrs={"placeholder": "Se houver um discord para este grupo, link aqui."}),
+        required=False
+    )
+
+    tags_ = forms.ModelMultipleChoiceField(
+        label="Tags", queryset=Tag.objects.all(), widget=Select2MultipleWidget
+    )
+
+    '''
+    class Meta:
+        model = User
+        fields = ("first_name", "last_name", "email", "username")
+        
+   
+    def __init__(self, *args, **kwargs):
+        super(RegisterRoom, self).__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        instance = super(RegisterRoom, self).save(commit=False)
+
+        if commit:
+            instance.save()
+
+            profile = Profile(
+                user=instance,
+                github=self.cleaned_data["github"],
+            )
+            authenticate(
+                username=instance.username, password=self.cleaned_data.get("password1")
+            )
+            profile.save()
+            profile.tags.set(self.cleaned_data["tags_"])
+            profile.save()
+        return instance'''
