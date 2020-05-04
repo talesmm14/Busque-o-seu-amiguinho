@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profiles</title>
+    <style>
+        div {
+            padding: 10px
+        }
+
+        ul {
+            list-style-type: none
+        }
+
+        /* darken the control area */
+
+        .carousel .carousel-control {
+            opacity: 1
+        }
+
+        .carousel .carousel-control.left {
+            background-image: linear-gradient(to right, rgb(0, 0, 0) 0, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .carousel .carousel-control.right {
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0) 0, rgb(0, 0, 0) 100%);
+        }
+
+
+        /* add darkness over the image */
+        .item {
+            position: relative
+        }
+
+        .item:before {
+            content: '';
+            background: rgba(0, 0, 0, 0.2);
+            /* change this value from 0.1 to 1; */
+            width: 30px;
+            height: 30px;
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 5;
+        }
+
+
+    </style>
+</head>
+<body>
+<h1>Profiles</h1>
+<a href="{% url 'page_home_view' %}"
+   aria-pressed="true">Voltar
+</a>
+{% load static %}
+<!-- Bootstrap core CSS -->
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+{% for profile in profiles %}
+
+    <div class="card" style="width: 18rem;">
+
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">{{ profile.user }}</h5>
+                <div class="row ">
+                    {% for tag in profile.tags.get_queryset %}
+                        <h6 class="card-subtitle text-white"><span class="badge badge-pill" style="background-color : {{ tag.color }}">
+                            {{ tag.name }} </span>
+                        </h6>
+                    {% endfor %}
+                </div>
+                <p class="card-text">{{ profile.bio }}</p>
+                <a href="{{ profile.github }}" class="badge badge-secondary">Github</a>
+                <a href="https://t.me/{{ profile.telegram_nick }}" class="badge badge-primary">Telegram</a>
+                <a href="https://t.me/{{ profile.discord_nick }}" class="badge badge-dark">Discord</a>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</body>
+</html>

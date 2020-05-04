@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+{% load static %}
+{% load widget_tweaks %}
+{% block main %}
+        <div class="container">
+            <h2>Perfil</h2>
+            <h4>Atualize seu perfil!</h4>
+            <a href="{% url 'change_info' %}">
+                <button class="botao btn btn-primary" type="button" style="height:75px;width:100%;margin-top:25px;">
+                    Atualizar seu Perfil
+                </button>
+            </a>
+            <a href="{% url 'change_password' %}">
+                <button class="botao btn btn-primary" type="button" style="height:75px;width:100%;margin-top:25px;">
+                    Atualizar sua senha
+                </button>
+            </a>
+            <a href="#">
+                <button class="botao btn btn-primary" type="button" style="height:75px;width:100%;margin-top:25px;">
+                    Ver suas salas de estudo
+                </button>
+            </a>
+            <a href="/">
+                <button class="botao btn btn-success" type="button" style="height:75px;width:100%;margin-top:25px;">
+                    Voltar
+                </button>
+            </a>
+        </div>
+{% endblock %}
+</body>
+</html>
