@@ -23,8 +23,13 @@ def page_signup(request):
 
 
 @login_required
+def profile_area(request):
+    return render(request, "profile-area.html")
+
+
+@login_required
 def profile_change_password(request):
-    template_name = "pythonistas-area-password-change.html"
+    template_name = "profile-area-password-change.html"
     context = {"form": PasswordChangeForm(request.user)}
 
     if request.method == "POST":
@@ -43,7 +48,7 @@ def profile_change_password(request):
 @login_required
 def profile_change_info(request):
     profile = request.user.profile
-    template = "pythonistas-area-info-change.html"
+    template = "profile-area-info-change.html"
     context = {"form": EditProfileForm(instance=profile)}
 
     if request.method == "POST":
