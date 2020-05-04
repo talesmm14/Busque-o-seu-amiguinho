@@ -1,1 +1,1 @@
-web: gunicorn BusqueAmiginho.wsgi:application --preload --workers 1
+web: gunicorn BusqueAmiginho:app
