@@ -20,3 +20,4 @@ gunicorn
 django-heroku
 dj-database-url
 whitenoise
+dj_static
