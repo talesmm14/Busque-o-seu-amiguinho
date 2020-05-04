@@ -14,6 +14,18 @@ class RegisterForm(UserCreationForm):
         required=False,
     )
 
+    telegram = forms.CharField(
+        label="Telegram (opcional)",
+        widget=forms.TextInput(attrs={"placeholder": "Nickname seu Telegram"}),
+        required=False,
+    )
+
+    discord = forms.CharField(
+        label="Discord (opcional)",
+        widget=forms.TextInput(attrs={"placeholder": "Nickname seu Discord"}),
+        required=False,
+    )
+
     tags_ = forms.ModelMultipleChoiceField(
         label="Tags", queryset=Tag.objects.all(), widget=Select2MultipleWidget
     )
@@ -44,6 +56,8 @@ class RegisterForm(UserCreationForm):
             profile = Profile(
                 user=instance,
                 github=self.cleaned_data["github"],
+                telegram=self.cleaned_data["telegram"],
+                discord=self.cleaned_data["discord"],
                 bio=self.cleaned_data["bio"],
             )
             authenticate(
@@ -88,5 +102,5 @@ class PasswordChangeForm(SetPasswordForm):
 class EditProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ("github", "tags")
+        fields = ("github", "telegram_nick", "discord_nick", "bio", "tags")
         widgets = {"tags": Select2MultipleWidget}
