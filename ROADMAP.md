@@ -11,8 +11,8 @@ O Busque seu amiginho coisas para fazer
  - [X] Cadastro
  - [X] Login
  - [X] Visualizar amiguinhos
- - [ ] Sair
- - [ ] Editar perfil
+ - [x] Sair
+ - [x] Editar perfil
  - [X] Mudar senha
  - [ ] Criar sala de estudo
  - [ ] Editar sala de estudo

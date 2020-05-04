@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     github = models.URLField(verbose_name="GitHub", blank=True, default="")
+    telegram_nick = models.TextField(verbose_name="Telegram", blank=True, default="")
+    discord_nick = models.TextField(verbose_name="Discord", blank=True, default="")
     tags = models.ManyToManyField("Tag")
     bio = models.TextField(
         "Sobre você",

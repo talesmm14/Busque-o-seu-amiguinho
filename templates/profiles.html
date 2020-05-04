@@ -21,6 +21,8 @@
     <div>
         <li>Nome: {{ profile.user }}</li>
         <li>GitHub: {{ profile.github }}</li>
+        <li>Telegram: {{ profile.telegram_nick }}</li>
+        <li>Discord: {{ profile.discord_nick }}</li>
         <li>Bio: {{ profile.bio }}</li>
         {% for tag in profile.tags.get_queryset %}
             <li>Tags: {{ tag.name }}</li>
