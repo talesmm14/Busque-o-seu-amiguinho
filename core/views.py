@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .models import Profile, Tag, StudyRoom
 
 # Create your views here.
-from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm, RegisterRoom
+from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm
 
 
 def page_home_view(request):
@@ -79,6 +79,10 @@ def profiles_view(request):
 # create view_rooms
 
 # study_room creation
+class RegisterRoom(object):
+    pass
+
+
 def study_room_creation(request):
     context = {"form": RegisterRoom(request.POST or None)}
 
