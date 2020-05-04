@@ -1,5 +1,5 @@
+from colorful.fields import RGBColorField
 from django.db import models
-
 from django.contrib.auth.models import User
 
 
@@ -36,6 +36,7 @@ class StudyRoom(models.Model):
 
 class Tag(models.Model):
     name = models.CharField("Tag", max_length=100, default="", blank=False)
+    color = RGBColorField()
 
     def __str__(self):
         return self.name
