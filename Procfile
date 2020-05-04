@@ -1,0 +1,1 @@
+web: gunicorn Busqueamiguinho.wsgi

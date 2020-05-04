@@ -1,0 +1,16 @@
+Metadata-Version: 2.0
+Name: fake-factory
+Version: 9999.9.9
+Summary: The `fake-factory` package was deprecated on December 15th, 2016. Use the `Faker` package instead.
+Home-page: https://github.com/joke2k/faker
+Author: joke2k
+Author-email: joke2k@gmail.com
+License: MIT License
+Platform: any
+Classifier: Development Status :: 7 - Inactive
+Classifier: License :: OSI Approved :: MIT License
+
+ERROR:
+The `fake-factory` package was deprecated on December 15th, 2016.
+Use the `Faker` package instead.
+
