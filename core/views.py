@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from .models import Profile, Tag, StudyRoom
 
 # Create your views here.
-from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm
+from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm, RegisterRoom
 
 
 def page_home_view(request):
@@ -70,9 +70,20 @@ def page_home_view(request):
     return render(request, "pages/index.html")
 
 
-# create view_profiles
+# view_profiles (Visualizar Amiguinhos)
 def profiles_view(request):
     profiles = Profile.objects.all()
     return render(request, "profiles.html", {'profiles': profiles})
 
+
 # create view_rooms
+
+# study_room creation
+def study_room_creation(request):
+    context = {"form": RegisterRoom(request.POST or None)}
+
+    if request.method == "POST" and context["form"].is_valid():
+        user = context["form"].save()
+        login(request, user)
+        return redirect("/")
+    return render(request, "study_room_creation.html", context)
