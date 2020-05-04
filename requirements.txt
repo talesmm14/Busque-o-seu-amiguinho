@@ -43,3 +43,5 @@ wrapt==1.11.2
 django-widget-tweaks
 django-select2
 django-colorful
+gunicorn
+django-heroku
