@@ -19,6 +19,10 @@
         <li>Nome: {{ profile.user }}</li>
         <li>GitHub: {{ profile.github }}</li>
         <li>Bio: {{ profile.bio }}</li>
+        {%for tag in tags %}
+            <li>Tags: {{ tag.name }}</li>
+        {% endfor %}
+
     </div>
     {% endfor %}
 </ul>
