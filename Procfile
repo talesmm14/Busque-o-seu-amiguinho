@@ -1,1 +1,1 @@
-web: gunicorn Busqueamiguinho.wsgi --log-file -
+web: gunicorn BusqueAmiginho.wsgi --log-file -
