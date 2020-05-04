@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'widget_tweaks',
     'colorful',
+    'gunicorn',
     "django_select2",
     'core',
 ]

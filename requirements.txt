@@ -1,3 +1,4 @@
+django
 colorful
 asgiref==3.2.7
 chardet==3.0.4
