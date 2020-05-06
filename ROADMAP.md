@@ -24,5 +24,6 @@ O Busque seu amiginho coisas para fazer
  - [ ] Contato
  - [ ] Banco de dados Postgressql
  - [ ] Frond End React
- - [ ] Deploy in Heroku 
+ - [X] Deploy in Heroku 
+ - [X] Mudar banco para Postgressql
  
