@@ -1,5 +1,7 @@
 # Busque seu amiginho
 
+Disponível em https://busqueamiguinho.herokuapp.com
+
 Projeto Open source feito por amiginhos para
 você encontrar novos amiginhos!
 
