@@ -14,13 +14,13 @@ class RegisterForm(UserCreationForm):
         required=False,
     )
 
-    telegram = forms.CharField(
+    telegram_nick = forms.CharField(
         label="Telegram (opcional)",
         widget=forms.TextInput(attrs={"placeholder": "Nickname seu Telegram"}),
         required=False,
     )
 
-    discord = forms.CharField(
+    discord_nick = forms.CharField(
         label="Discord (opcional)",
         widget=forms.TextInput(attrs={"placeholder": "Nickname seu Discord"}),
         required=False,
@@ -52,13 +52,12 @@ class RegisterForm(UserCreationForm):
 
         if commit:
             instance.save()
-
             profile = Profile(
                 user=instance,
-                github=self.cleaned_data["github"],
-                telegram=self.cleaned_data["telegram"],
-                discord=self.cleaned_data["discord"],
-                bio=self.cleaned_data["bio"],
+                github=self.cleaned_data['github'],
+                discord_nick=self.cleaned_data['discord_nick'],
+                telegram_nick=self.cleaned_data['telegram_nick'],
+                bio=self.cleaned_data['bio']
             )
             authenticate(
                 username=instance.username, password=self.cleaned_data.get("password1")

@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV='C:\Users\tales\Documents\GitHub\Busque-o-seu-amiguinho\env'
+VIRTUAL_ENV='C:\Users\Silver_Duck\Google Drive\Studies\.projects\python\Busque-o-seu-amiguinho\env'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -1,6 +1,6 @@
 @echo off
 
-set "VIRTUAL_ENV=C:\Users\tales\Documents\GitHub\Busque-o-seu-amiguinho\env"
+set "VIRTUAL_ENV=C:\Users\Silver_Duck\Google Drive\Studies\.projects\python\Busque-o-seu-amiguinho\env"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"
