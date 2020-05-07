@@ -2,20 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Registro da Sala de Estudo</title>
+    <title>Criar Grupos</title>
 </head>
 <body>
+<a href="{% url 'page_home_view' %}"
+               aria-pressed="true">Voltar
+            </a>
 {% load widget_tweaks %}
 {% load static %}
 {% block main %}
     <section style="padding: 30px;">
         <div class="container">
-            <h2 class="text-info">Crie sua Sala de Estudo ou projeto</h2>
+            <h2 class="text-info">Criacao de grupo de estudo ou projeto</h2>
             <form action="." method="post">
                 <p>{{ message }}</p>
                 {% csrf_token %}
                 {% for hidden_field in form.hidden_fields %}
-                    {{ hidden_field }}
+                    {{ hidden_fields }}
                 {% endfor %}
                 {% for field in form.visible_fields %}
                     {% if field.html_name != "on_mailing_list" %}
@@ -27,9 +30,9 @@
                     {% endif %}
                     <div class="row">
                         <div class="col-md-12">
-                            {% if field.html_name != "tags_" %}
+                            {% if field.html_name != "tags_group" %}
                                 {% render_field field style="margin-top:5px; width:100%; height: 44px;border-radius: 10px;border: 1px solid rgba(170, 170, 170, 0.3);overflow: hidden;padding: 10px;-moz-box-shadow:    inset 0 0 5px #aaa;-webkit-box-shadow: inset 0 0 5px #aaa;box-shadow: inset 0 0 5px #aaa;-webkit-appearance: none;-moz-appearance: none;" %}
-                            {% elif field.html_name == "tags_" %}
+                            {% elif field.html_name == "tags_group" %}
                                 {% render_field field id="id_tags" style="margin-top:5px; width:100%; height: 44px;border-radius: 10px;border: 1px solid rgba(170, 170, 170, 0.3);overflow: hidden;padding: 10px;-moz-box-shadow:    inset 0 0 5px #aaa;-webkit-box-shadow: inset 0 0 5px #aaa;box-shadow: inset 0 0 5px #aaa;-webkit-appearance: none;-moz-appearance: none;" %}
                             {% endif %}
                             {% for error in field.errors %}
@@ -37,6 +40,9 @@
                                     {{ error }}
                                 </div>
                             {% endfor %}
+                            {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text|safe }}</small>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}
@@ -46,6 +52,20 @@
             </form>
         </div>
     </section>
+{% if form.errors %}
+    {% for field in form %}
+        {% for error in field.errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% for error in form.non_field_errors %}
+        <div class="alert alert-danger">
+            <strong>{{ error|escape }}</strong>
+        </div>
+    {% endfor %}
+{% endif %}
 {% endblock %}
 {% block extra_scripts %}
 

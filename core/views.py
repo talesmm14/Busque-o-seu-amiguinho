@@ -2,10 +2,11 @@ from django.contrib import messages
 from django.contrib.auth import login, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
-from .models import Profile, Tag, StudyRoom
+from .models import *
+from django.http import Http404
 
 # Create your views here.
-from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm
+from core.forms import RegisterForm, PasswordChangeForm, EditProfileForm, CreateRoomForm
 
 
 def page_home_view(request):
@@ -84,10 +85,25 @@ class RegisterRoom(object):
 
 
 def study_room_creation(request):
-    context = {"form": RegisterRoom(request.POST or None)}
+    context = {"form": CreateRoomForm(request.POST or None)}
+    print(context)
+    #if request.method == "POST" and context["form"].is_valid():
+    if request.method == "POST":
+        context = {"form": CreateRoomForm(request.POST or None)}
+        print(context)
+        print('----')
+        print(context["form"].is_valid())
+        if context["form"].is_valid():
+            group = context["form"].save()
+            url_answer = 'create-group/' + group.id
+            return render(request, url_answer, {'group': group}
+            )
+        else:
+            form.errors
+            #raise Http404
+    else:
+        #login(request, group)
+        #return redirect("grupos/<id>")
+        context = {"form": CreateRoomForm(request.POST or None)}
+        return render(request, "criar-grupos.html", context)
 
-    if request.method == "POST" and context["form"].is_valid():
-        user = context["form"].save()
-        login(request, user)
-        return redirect("/")
-    return render(request, "study_room_creation.html", context)

@@ -1,7 +1,7 @@
 from colorful.fields import RGBColorField
 from django.db import models
 from django.contrib.auth.models import User
-
+from datetime import date
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -15,6 +15,7 @@ class Profile(models.Model):
         help_text="Descreva sobre você para os amiginhos poderem te conhecer melhor!!",
     )
 
+
     def __str__(self):
         return "{} {}".format(self.user.first_name, self.user.last_name)
 
@@ -25,13 +26,23 @@ class Profile(models.Model):
         verbose_name = "Perfil"
         verbose_name_plural = "Perfis"
 
-
 class StudyRoom(models.Model):
     group_name = models.CharField("Nome do grupo", max_length=500, blank=False)
-    telegram = models.URLField(verbose_name="Telegram", blank=True, default="")
-    discord = models.URLField(verbose_name="Discord", blank=True, default="")
-    users = models.ManyToManyField(Profile, blank=True)
-    tags = models.ManyToManyField("Tag")
+    telegram_group = models.URLField(verbose_name="Telegram", blank=True, default="")
+    discord_group = models.URLField(verbose_name="Discord", blank=True, default="")
+    #users_group = models.ManyToManyField("Profile")
+    tags_group = models.ManyToManyField("Tag")
+    limit_date = models.DateField(verbose_name="Data expiracao do Grupo", default=date.today)
+
+    def __str__(self):
+        return self.group_name
+        return "{}".format(self.group_name)
+
+    def __repr__(self):
+        return self.group_name
+
+    def get_absolute_url(self):
+        return reverse('create-group', kwargs={'pk': self.pk})
 
 
 class Tag(models.Model):

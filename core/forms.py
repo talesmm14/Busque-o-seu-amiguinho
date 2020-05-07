@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate
 from django.contrib.auth.forms import UserCreationForm, SetPasswordForm
 from django import forms
 
-from core.models import Profile, Tag
+from core.models import *
 from django_select2.forms import Select2MultipleWidget
 from django.contrib.auth.models import User
 
@@ -103,3 +103,63 @@ class EditProfileForm(forms.ModelForm):
         model = Profile
         fields = ("github", "telegram_nick", "discord_nick", "bio", "tags")
         widgets = {"tags": Select2MultipleWidget}
+
+
+class CreateRoomForm(forms.ModelForm):
+    group_name = forms.CharField(
+        label="Nome do Grupo de estudos ou projeto",
+        widget=forms.TextInput(attrs={"placeholder": "Nome do Grupo"}),
+        required=False,
+    )
+
+    telegram_group = forms.CharField(
+        label="Telegram (opcional)",
+        widget=forms.TextInput(attrs={"placeholder": "Link do Telegram do Grupo"}),
+        required=False,
+    )
+
+    discord_group = forms.URLField(
+        label="Discord (opcional)",
+        widget=forms.TextInput(attrs={"placeholder": "Link para o Discord do Grupo"}),
+        required=False,
+    )
+
+    tags_group = forms.ModelMultipleChoiceField(
+        label="Tags", queryset=Tag.objects.all(), widget=Select2MultipleWidget
+    )
+
+    limit_date = forms.CharField(
+        widget=forms.HiddenInput()
+    )
+
+    group_users = forms.ModelMultipleChoiceField(
+        label="Profile", queryset=Profile.objects.all(), widget=Select2MultipleWidget
+    )
+    class Meta:
+        model = Profile
+        fields = ("id",)
+        widgets = {"id": Select2MultipleWidget}
+
+    def __init__(self, *args, **kwargs):
+        super(CreateRoomForm, self).__init__(*args, **kwargs)
+
+    def save(self, commit=True):
+        instance = super(CreateRoomForm, self).save(commit=False)
+
+        if commit:
+            instance.save()
+            group = StudyRoom(
+                users_group=self.cleaned_data['users_group'],
+                group_name=self.cleaned_data['group_name'],
+                discord_group=self.cleaned_data['discord_group'],
+                telegram_group=self.cleaned_data['telegram_group'],
+            )
+            print(group)
+            authenticate(
+                username=instance.username
+            )
+            print(instance.username)
+            group.save()
+            group.tags_group.set(self.cleaned_data["tags_group"])
+            group.save()
+        return instance
