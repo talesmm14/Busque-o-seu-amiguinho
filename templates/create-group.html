@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro da Sala de Estudo</title>
+</head>
+<body>
+{% load widget_tweaks %}
+{% load static %}
+{% block main %}
+    <section style="padding: 30px;">
+        <div class="container">
+
+
+            <strong>olar</strong>
+            <h2 class="text-info">Crie sua Sala de Estudo ou projeto</h2>
+            <form action="." method="post">
+                <p>{{ message }}</p>
+                {% csrf_token %}
+                {% for hidden_field in form.hidden_fields %}
+                    {{ hidden_field }}
+                {% endfor %}
+                <strong>mama</strong>
+                {% for field in form.visible_fields %}
+                    {% if field.html_name != "on_mailing_list" %}
+                        <div class="row" style="margin-top:25px;">
+                            <div class="col-md-12">
+                                {{ field.label_tag }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% if field.html_name != "tags_" %}
+                                {% render_field field style="margin-top:5px; width:100%; height: 44px;border-radius: 10px;border: 1px solid rgba(170, 170, 170, 0.3);overflow: hidden;padding: 10px;-moz-box-shadow:    inset 0 0 5px #aaa;-webkit-box-shadow: inset 0 0 5px #aaa;box-shadow: inset 0 0 5px #aaa;-webkit-appearance: none;-moz-appearance: none;" %}
+                            {% elif field.html_name == "tags_" %}
+                                {% render_field field id="id_tags" style="margin-top:5px; width:100%; height: 44px;border-radius: 10px;border: 1px solid rgba(170, 170, 170, 0.3);overflow: hidden;padding: 10px;-moz-box-shadow:    inset 0 0 5px #aaa;-webkit-box-shadow: inset 0 0 5px #aaa;box-shadow: inset 0 0 5px #aaa;-webkit-appearance: none;-moz-appearance: none;" %}
+                            {% endif %}
+                            {% for error in field.errors %}
+                                <div class="invalid-feedback">
+                                    {{ error }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    <button class="botao" type="submit" style="margin-top: 20px;">ENVIAR</button>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+{% block extra_scripts %}
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#id_tags').select2();
+        });
+    </script>
+{% endblock %}
+</body>
+</html>
