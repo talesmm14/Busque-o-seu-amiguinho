@@ -17,7 +17,6 @@
             <form action="." method="post">
                 <p>{{ message }}</p>
                 {% csrf_token %}
-                {{ form.fields }}
                 {% for hidden_field in form.hidden_fields %}
                     {{ hidden_field }}
                 {% endfor %}
