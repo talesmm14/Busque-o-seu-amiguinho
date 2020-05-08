@@ -19,3 +19,4 @@ django-select2
 django-colorful
 django-heroku
 psycopg2
+datetime

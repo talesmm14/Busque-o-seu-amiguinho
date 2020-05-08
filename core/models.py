@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     github = models.URLField(verbose_name="GitHub", blank=True, default="")
@@ -15,7 +16,6 @@ class Profile(models.Model):
         help_text="Descreva sobre você para os amiginhos poderem te conhecer melhor!!",
     )
 
-
     def __str__(self):
         return "{} {}".format(self.user.first_name, self.user.last_name)
 
@@ -26,11 +26,12 @@ class Profile(models.Model):
         verbose_name = "Perfil"
         verbose_name_plural = "Perfis"
 
+
 class StudyRoom(models.Model):
     group_name = models.CharField("Nome do grupo", max_length=500, blank=False)
     telegram_group = models.URLField(verbose_name="Telegram", blank=True, default="")
     discord_group = models.URLField(verbose_name="Discord", blank=True, default="")
-    #users_group = models.ManyToManyField("Profile")
+    # users_group = models.ManyToManyField("Profile")
     tags_group = models.ManyToManyField("Tag")
     limit_date = models.DateField(verbose_name="Data expiracao do Grupo", default=date.today)
 
