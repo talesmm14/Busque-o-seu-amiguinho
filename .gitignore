@@ -1,4 +1,17 @@
 node_modules
 yarn.lock
 __pycache__
-db.sqlite3
+# See the name for you IDE
+idea/
+# If you are using sqlite3
+*.sqlite3
+# Name of your virtuan env
+.vEnv
+.env
+*pyc
+### Django ###
+*.log
+*.pot
+*.pyc
+### Migration ### Should create a new one using the makemigrations migrate command
+.migrations
