@@ -135,6 +135,7 @@ class CreateRoomForm(forms.ModelForm):
     group_users = forms.ModelMultipleChoiceField(
         label="Profile", queryset=Profile.objects.all(), widget=Select2MultipleWidget
     )
+
     class Meta:
         model = Profile
         fields = ("id",)

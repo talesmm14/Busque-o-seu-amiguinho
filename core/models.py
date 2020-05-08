@@ -2,6 +2,7 @@ from colorful.fields import RGBColorField
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import date
+from django.urls import reverse
 
 
 class Profile(models.Model):
@@ -37,7 +38,6 @@ class StudyRoom(models.Model):
 
     def __str__(self):
         return self.group_name
-        return "{}".format(self.group_name)
 
     def __repr__(self):
         return self.group_name

@@ -4,6 +4,7 @@ __pycache__
 # See the name for you IDE
 .idea
 /idea
+core/migrations
 # If you are using sqlite3
 *.sqlite3
 # Name of your virtuan env
